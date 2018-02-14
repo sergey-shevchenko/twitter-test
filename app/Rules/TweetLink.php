@@ -25,7 +25,7 @@ class TweetLink implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/http(?:s)?:\/\/(?:www\.)?twitter\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+/', $value);
+        return boolval(preg_match('/http(?:s)?:\/\/(?:www\.)?twitter\.com\/[a-zA-Z0-9_]+\/status\/[0-9]+/', $value));
     }
 
     /**
