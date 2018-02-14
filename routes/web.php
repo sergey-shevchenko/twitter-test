@@ -11,8 +11,13 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+}) ->name('get.home');
+
+Route::post('tweetReach', 'TwitterController@actionTweetReach')
+    ->name('post.tweetReach')
+    ->middleware(\App\Http\Middleware\GetTweetId::class);
+
+Route::get('tweetReach/{id}', 'TwitterController@actionReachView')
+    ->name('get.tweetReach');
