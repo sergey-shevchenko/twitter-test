@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Rules\TweetExists;
+use App\Rules\UrlReachable;
 use App\Rules\TweetLink;
 use Closure;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -21,7 +21,7 @@ class GetTweetId
     public function handle($request, Closure $next)
     {
         $this->validate($request, [
-            'tweetUrl' => ['required', new TweetLink(), new TweetExists()]
+            'tweetUrl' => ['required', new TweetLink(), new UrlReachable()]
         ]);
         $explodedUrl = explode('/', $request->tweetUrl);
         $request->tweetId = array_pop($explodedUrl);

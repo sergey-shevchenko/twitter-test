@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Tweeter;
 
-class TweetExists implements Rule
+class UrlReachable implements Rule
 {
     /**
      * Create a new rule instance.
