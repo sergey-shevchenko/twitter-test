@@ -22,11 +22,9 @@ class GetTweetIdMigglewareTest extends TestCase
         $request = Request::create(route('post.tweetReach'), 'POST', ['tweetUrl' => $properTwitterUrl]);
         $passedTwitterId = '';
         $middleware = new GetTweetId();
-        try{
-            $middleware->handle($request, function($request) use (&$passedTwitterId) {
-                $passedTwitterId = $request->tweetId;
-            });
-        } catch(\Exception $e) {dd($e);}
+        $middleware->handle($request, function($request) use (&$passedTwitterId) {
+            $passedTwitterId = $request->tweetId;
+        });
         $this->assertTrue(true);
         $this->assertEquals($properTwitterId, $passedTwitterId, 'Tweet ID calculated correctly');
     }
